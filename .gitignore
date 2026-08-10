@@ -1,38 +1,63 @@
-# Dependencies
-node_modules/
-vendor/
-
-# Build
-dist/
-build/
-*.local
-
-# Secrets — never commit
-.env
-.env.*
+# 忽略所有隐藏文件和目录
+.*
+# 但不忽略特定隐藏文件和目录
 !.env.example
-!.env.lite.example
+!.gitignore
+!.github/
+
+# 敏感文件
 *.pem
+*_key
+*_secret
 *.key
-credentials.json
+*.crt
 
-# OS / IDE
-.DS_Store
-.idea/
-.vscode/
+# IDE和编辑器文件
 *.swp
+*.swo
 
-# Logs & temp
+# 构建和依赖文件
+node_modules/
+/dist/
+/build/
 *.log
+
+# 临时文件
 tmp/
 temp/
-coverage/
+logs/
+*.pid
 
-# Vector / DB data (local dev)
-data/milvus/
-data/postgres/
-data/elasticsearch/
-*.db
+WeKnora
+WeKnora-lite
+cmd/desktop/build/bin/
+/models/
+test/data/mswag.txt
+data/files/
+data/weknora.db
+data/weknora.db-wal
+data/weknora.db-shm
 
-# Go
-bin/
+web/
+
+**/__pycache__
+/scripts/scale_dev_jobs.sh
+/server
+frontend/.vite
+frontend/chrome-extension/
+WeKnora-Chrome-Extension
+# Custom development
+custom/temp/
+custom/*.local
+.env.custom
+*.backup
+packages/protoc-3.19.4-linux-x86_64.zip
+
+Claude.md
+
+# 本地测试脚本
+configure-ollama.sh
+fix-docker.sh
+
+# WeChat Mini Program local/private configuration
+miniprogram/project.private.config.json

@@ -1,46 +1,78 @@
 # Supply Chain Planning Knowledge Hub
 
-**Domain RAG for supply chain planning** — MRP, APS, S&OP, TOC terminology and documents, built on a [WeKnora](https://github.com/Tencent/WeKnora)-derived stack.
+**Domain RAG for supply chain planning** — MRP, APS, S&OP, and TOC terminology and documents, built on a [WeKnora](https://github.com/Tencent/WeKnora)-derived stack.
 
-> **Status:** Repository initialized (2026-08-09). Full Docker Compose stack, SCP corpus and MCP integration land in the **08-10 → 08-13** sprint per the public roadmap below.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Why this exists
+## What this is
 
-Planning agents need **terminology and master data** without stuffing glossaries into every prompt. This hub indexes supply-chain planning knowledge (definitions, constraint types, planning horizons, solver outputs) and exposes it through RAG — the same pattern used in production SCP agent harnesses, de-sensitized for public release.
+A **WeKnora fork** customized for **supply chain planning knowledge**:
 
-## Planned architecture
+- Ingest planning glossaries and documents (MRP / MPS / S&OP / TOC)
+- Chunk, embed, and retrieve through Milvus / Elasticsearch / pgvector (configurable)
+- Expose RAG to agents via HTTP and MCP — so models look up domain terms instead of carrying them in the prompt
+
+This repo is the public codebase derived from internal `weknora-knowledgehub` work. Upstream feature docs: [`README_WEKNORA.md`](README_WEKNORA.md).
+
+## Quick start (Docker Compose)
+
+```bash
+cp .env.example .env
+# Edit .env — set LLM / embedding API keys
+
+docker compose up -d
+```
+
+Default UI: `http://localhost` (see `.env` for `FRONTEND_PORT` / `APP_PORT`).
+
+Development mode:
+
+```bash
+docker compose -f docker-compose.dev.yml up
+```
+
+See [`docs/LITE.md`](docs/LITE.md) and [`README_WEKNORA.md`](README_WEKNORA.md) for full upstream documentation.
+
+## SCP corpus slot
+
+Pre-seeded planning glossary (interview / agent demo):
 
 ```
-Documents / glossary  →  ingest  →  chunk + embed  →  vector store (Milvus / pgvector)
-                                                          ↓
-Planner / Agent  ←  MCP or HTTP  ←  retrieve + rerank  ←  query
+data/scp-corpus/glossary.md
 ```
 
-| Layer | Planned component |
+Import through the knowledge-base UI or your own ingest pipeline.
+
+## Architecture (high level)
+
+```
+Planning docs / glossary  →  ingest  →  chunk + embed  →  vector store
+                                                              ↓
+Agent / planner  ←  MCP or HTTP API  ←  retrieve + rerank  ←  query
+```
+
+| Component | Location |
 |---|---|
-| **Corpus** | SCP glossary (MRP / APS / TOC), synthetic planning docs — no customer data |
-| **Hub** | WeKnora-derived backend (Go) + web UI |
-| **Vectors** | Milvus + Elasticsearch + pgvector (configurable) |
-| **Agent access** | MCP server for `lookupTerm` / `searchPlanningDoc` style tools |
+| Go backend + agents | `internal/`, `cmd/server/` |
+| Web UI | `frontend/` |
+| MCP server | `mcp-server/` |
+| Docker / Helm | `docker-compose.yml`, `helm/` |
+| Custom fork notes | [`CUSTOM_CHANGES.md`](CUSTOM_CHANGES.md), [`README-CUSTOM.md`](README-CUSTOM.md) |
 
-## Roadmap (08-10 → 08-13)
+## Sync with upstream WeKnora
 
-- [ ] **D1** — Secret audit (`.env`, internal URLs), `.env.example`, gitleaks
-- [ ] **D2** — Docker Compose: frontend + backend + vector DB
-- [ ] **D3** — Pre-seed SCP corpus slot + English README (architecture + diff vs upstream WeKnora)
-- [ ] **D4** — Public push + GitHub About (`supply chain planning`, `RAG`, `MCP`)
+```bash
+git remote add upstream https://github.com/Tencent/WeKnora.git   # once
+./sync-upstream.sh
+```
 
-See [`docs/ROADMAP.md`](docs/ROADMAP.md) for detail.
-
-## Development source
-
-Active development happens from a sanitized copy of the internal WeKnora fork (`UHAlean-Project/weknora-knowledgehub/`). **Do not copy customer SCP repositories into this public tree.**
+Details: [`SYNC_UPSTREAM.md`](SYNC_UPSTREAM.md)
 
 ## Related public work
 
-- [`pixi-gantt`](https://github.com/mizuno0237/pixi-gantt) — Canvas scheduling UI (peer to planning agents)
-- `scp-planning-copilot` *(coming 08-14)* — Vue 3 + Vercel AI SDK copilot consuming this hub
+- [`pixi-gantt`](https://github.com/mizuno0237/pixi-gantt) — Canvas scheduling UI
+- [`scp-planning-copilot`](https://github.com/mizuno0237/scp-planning-copilot) *(planned)* — Vue 3 + Vercel AI SDK copilot
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Derived from Tencent WeKnora (MIT); supply-chain corpus and customizations are original to this repository.
+MIT — see [LICENSE](LICENSE). Derived from [Tencent WeKnora](https://github.com/Tencent/WeKnora) (MIT).

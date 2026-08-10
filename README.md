@@ -17,15 +17,16 @@ This repo is the public codebase derived from internal `weknora-knowledgehub` wo
 ## Quick start (Docker Compose)
 
 ```bash
-cp .env.example .env
-# Edit .env — set LLM / embedding API keys
-
+cp .env.docker.example .env
+./scripts/prepare-compose.sh   # Windows: .\scripts\prepare-compose.ps1
 docker compose up -d
 ```
 
-Default UI: `http://localhost` (see `.env` for `FRONTEND_PORT` / `APP_PORT`).
+Default UI: `http://localhost` · API health: `http://localhost:8080/health`
 
-Development mode:
+Full guide: [`docs/DOCKER-QUICKSTART.md`](docs/DOCKER-QUICKSTART.md)
+
+Development mode (infra only, app on host):
 
 ```bash
 docker compose -f docker-compose.dev.yml up

@@ -36,15 +36,19 @@ See [`docs/LITE.md`](docs/LITE.md) and [`README_WEKNORA.md`](README_WEKNORA.md) 
 
 ## SCP corpus slot
 
-Pre-seeded planning glossary (interview / agent demo):
+Pre-seeded planning glossary (**90 terms**: MRP / APS / S&OP / TOC) for interview prep and agent demos:
 
-```
-data/scp-corpus/glossary.md
-```
+| Resource | Description |
+|---|---|
+| [`data/scp-corpus/glossary.md`](data/scp-corpus/glossary.md) | Bilingual definitions + 30s speakable scripts |
+| [`data/scp-corpus/README.md`](data/scp-corpus/README.md) | Ingest steps and chunking guidance |
+| [`data/scp-corpus/manifest.json`](data/scp-corpus/manifest.json) | Corpus metadata for tooling |
 
 Import through the knowledge-base UI or your own ingest pipeline.
 
-## Architecture (high level)
+## Architecture
+
+High-level SCP RAG flow:
 
 ```
 Planning docs / glossary  →  ingest  →  chunk + embed  →  vector store
@@ -52,11 +56,14 @@ Planning docs / glossary  →  ingest  →  chunk + embed  →  vector store
 Agent / planner  ←  MCP or HTTP API  ←  retrieve + rerank  ←  query
 ```
 
+**Full write-up:** [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — corpus design, agent harness wiring, deployment modes.
+
 | Component | Location |
 |---|---|
 | Go backend + agents | `internal/`, `cmd/server/` |
 | Web UI | `frontend/` |
 | MCP server | `mcp-server/` |
+| SCP corpus slot | `data/scp-corpus/` |
 | Docker / Helm | `docker-compose.yml`, `helm/` |
 | Custom fork notes | [`CUSTOM_CHANGES.md`](CUSTOM_CHANGES.md), [`README-CUSTOM.md`](README-CUSTOM.md) |
 

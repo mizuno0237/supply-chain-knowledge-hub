@@ -5,6 +5,19 @@
 1. **朗读 (Read aloud)**: Read the **English** line first to lock in the one-sentence definition, then the **中文** line to cross-check meaning.
 2. **30s script**: Practice the speakable paragraph out loud as if answering "What is X and where have you used it?" in a B2–C1 interview. Scripts are grounded in enterprise SCP delivery (Panasonic, Danone, Hisense, airline crew rostering, CPLEX/Gurobi, Pixi Gantt, APS/MRP) — replace placeholders like **【填入真实数字】** with your real project numbers before interviews.
 
+## Term index (90)
+
+| Category | Sample terms |
+|---|---|
+| **1. Planning Core** (18) | MRP, MPS, S&OP, DRP, APS, MRP II, CRP, RCCP, netting, pegging, … |
+| **2. Manufacturing & Scheduling** (18) | routing, work center, setup time, Gantt, finite capacity, dispatch list, … |
+| **3. Inventory & Demand** (15) | safety stock, forecast, ATP, DFP, consensus demand, … |
+| **4. Optimization & Solving** (12) | CPLEX, Gurobi, heuristic, objective function, MIP, … |
+| **5. Industry & Systems** (12) | SCP, ERP, MES, micro-frontend, digital twin, … |
+| **6. TOC & Narrative** (15) | constraint, DBR, throughput, five focusing steps, takt time, … |
+
+Full metadata: [`manifest.json`](manifest.json) · Ingest guide: [`README.md`](README.md)
+
 ---
 
 ## 1. 计划核心 (Planning Core) — 18 terms

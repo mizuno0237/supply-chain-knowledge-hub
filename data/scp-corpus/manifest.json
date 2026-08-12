@@ -1,0 +1,33 @@
+{
+  "name": "scp-planning-glossary",
+  "version": "1.0.0",
+  "description": "90 supply chain planning terms for RAG retrieval and agent grounding",
+  "language": ["en", "zh"],
+  "termCount": 90,
+  "categories": [
+    { "id": "planning-core", "title": "Planning Core", "terms": 18 },
+    { "id": "manufacturing-scheduling", "title": "Manufacturing & Scheduling", "terms": 18 },
+    { "id": "inventory-demand", "title": "Inventory & Demand", "terms": 15 },
+    { "id": "optimization-solving", "title": "Optimization & Solving", "terms": 12 },
+    { "id": "industry-systems", "title": "Industry & Systems", "terms": 12 },
+    { "id": "toc-narrative", "title": "TOC & Narrative", "terms": 15 }
+  ],
+  "files": [
+    {
+      "path": "glossary.md",
+      "format": "markdown",
+      "chunkStrategy": "split on ### headings (one term per chunk)"
+    }
+  ],
+  "tags": [
+    "MRP",
+    "MPS",
+    "APS",
+    "S&OP",
+    "DRP",
+    "TOC",
+    "supply-chain-planning",
+    "finite-scheduling",
+    "RAG"
+  ]
+}

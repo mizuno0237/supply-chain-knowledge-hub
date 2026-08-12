@@ -2,6 +2,12 @@
 
 ## 版本历史
 
+### v1.0.1-public (2026-08-12)
+
+- D3：`docs/ARCHITECTURE.md` — SCP RAG architecture + agent harness wiring
+- D3：`data/scp-corpus/README.md` + `manifest.json` — corpus ingest guide
+- README：corpus 表格 + architecture 文档链接
+
 ### v1.0.0-public (2026-08-10)
 
 - 公开仓库 `supply-chain-knowledge-hub` — 基于 WeKnora 二开

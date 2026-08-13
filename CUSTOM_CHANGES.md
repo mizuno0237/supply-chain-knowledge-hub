@@ -2,6 +2,11 @@
 
 ## 版本历史
 
+### v1.0.2-public (2026-08-13)
+
+- D4：GitHub About 文案 + topics（`docs/GITHUB-ABOUT.md`，`scripts/set-github-about.*`）
+- D4：公开 sprint 完成（4 天 W2-02b）
+
 ### v1.0.1-public (2026-08-12)
 
 - D3：`docs/ARCHITECTURE.md` — SCP RAG architecture + agent harness wiring

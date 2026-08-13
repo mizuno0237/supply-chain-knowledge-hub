@@ -3,6 +3,9 @@
 **Domain RAG for supply chain planning** — MRP, APS, S&OP, and TOC terminology and documents, built on a [WeKnora](https://github.com/Tencent/WeKnora)-derived stack.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Docker Compose](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](docs/DOCKER-QUICKSTART.md)
+
+**Public release** · 4-day sprint complete (08-10 → 08-13) · About setup: [`docs/GITHUB-ABOUT.md`](docs/GITHUB-ABOUT.md)
 
 ## What this is
 

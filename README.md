@@ -82,7 +82,9 @@ Details: [`SYNC_UPSTREAM.md`](SYNC_UPSTREAM.md)
 ## Related public work
 
 - [`pixi-gantt`](https://github.com/mizuno0237/pixi-gantt) — Canvas scheduling UI
-- [`scp-planning-copilot`](https://github.com/mizuno0237/scp-planning-copilot) *(planned)* — Vue 3 + Vercel AI SDK copilot
+- [`scp-planning-copilot`](https://github.com/mizuno0237/scp-planning-copilot) — Vue 3 finite-capacity board plus a streaming dispatch pad
+- [`scp-agent-ontology-hub`](https://github.com/mizuno0237/scp-agent-ontology-hub) — typed world model the planning agent reads
+- [`scp-workbench`](https://github.com/mizuno0237/scp-workbench) — synthetic MPS + oven load sample
 
 ## License
 

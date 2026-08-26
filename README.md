@@ -47,6 +47,8 @@ Pre-seeded planning glossary (**90 terms**: MRP / APS / S&OP / TOC) for intervie
 | [`data/scp-corpus/README.md`](data/scp-corpus/README.md) | Ingest steps and chunking guidance |
 | [`data/scp-corpus/manifest.json`](data/scp-corpus/manifest.json) | Corpus metadata for tooling |
 
+Offline lookup (no Docker): `python scripts/lookup-glossary.py ATP`
+
 Import through the knowledge-base UI or your own ingest pipeline.
 
 ## Architecture
